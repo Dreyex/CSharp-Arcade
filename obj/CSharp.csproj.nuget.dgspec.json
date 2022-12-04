@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\Repos\\CSharp\\CSharp.csproj": {}
+    "C:\\Users\\HP EliteBook 820\\Documents\\GitHub\\CSharp-Arcade\\CSharp.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\Repos\\CSharp\\CSharp.csproj": {
+    "C:\\Users\\HP EliteBook 820\\Documents\\GitHub\\CSharp-Arcade\\CSharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\Repos\\CSharp\\CSharp.csproj",
+        "projectUniqueName": "C:\\Users\\HP EliteBook 820\\Documents\\GitHub\\CSharp-Arcade\\CSharp.csproj",
         "projectName": "CSharp",
-        "projectPath": "D:\\GitHub\\Repos\\CSharp\\CSharp.csproj",
-        "packagesPath": "C:\\Users\\mrmax\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\Repos\\CSharp\\obj\\",
+        "projectPath": "C:\\Users\\HP EliteBook 820\\Documents\\GitHub\\CSharp-Arcade\\CSharp.csproj",
+        "packagesPath": "C:\\Users\\HP EliteBook 820\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP EliteBook 820\\Documents\\GitHub\\CSharp-Arcade\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mrmax\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\HP EliteBook 820\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
