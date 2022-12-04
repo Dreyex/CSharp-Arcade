@@ -1,0 +1,77 @@
+h1
+{
+    text-align: center;
+}
+
+body
+{
+    background-color: #171717;
+    color: #ffffff;
+}
+
+a
+{
+    color: #ff0000;
+    text-decoration-line: none;
+}
+
+footer
+{
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+}
+
+code
+{
+    background-color: #2f2f2f;
+    color: #00bd09;
+    padding: 5px;
+}
+
+.main  /* div Klasse für den Hauptinhalt */
+{
+    /*border: 2px solid #ffffff;*/
+    position: absolute;
+    top: auto;
+    left: 20px;
+    height: auto;
+    width: 1600px;
+}
+
+.sidebarLocal  /*div-Klasse für die Seitenleiste -- aktuelle Seite */
+{
+    border: 2px solid #ffffff;
+    position: fixed;
+    right: 20px;
+    top: 90px;
+    height: auto;
+    width: 200px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+}
+
+.listLocal  /* Liste der Seitenleiste -- aktuelle Seite */
+{
+    text-align: left;
+}
+
+.sidebarGlobal /*div-Klasse für die globale Seitenleiste -- gesamtes Inhaltsverzeichnis */
+{
+    border: 2px solid #ffffff;
+    position: fixed;
+    right: 20px;
+    top: 300px;
+    height: auto;
+    width: 200px;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.listGlobal  /* Liste der Seitenleiste -- gesamtes Inhaltsverzeichnis */
+{
+    text-align: left;
+}
+
