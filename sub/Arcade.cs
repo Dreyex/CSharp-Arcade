@@ -1,16 +1,18 @@
-namespace tool;
+namespace sub;
+
+using gameCollection;
 
 public class Arcade
 {
     //attributes
-    String[] games = new String[]{"Rock-Paper-Scisscor", "Tic-Tac-Toe", "Connect 4", "Hangman"};
+    String[] gameList = new String[]{"Rock-Paper-Scisscor", "Tic-Tac-Toe", "Connect 4", "Hangman"};
 
     //methods
     public void menu()
     {
         String[,] logo = new String[8,1]
         {
-          {" _________________________________________________________"},  //ARCADE
+          {" _________________________________________________________ "},  //ARCADE
           {"|   ______   ______   ______   ______   _____    ______   |"},  
           {"|  |  __  | |  __  | |  ____| |  __  | |  __ -  |  ____|  |"},
           {"|  | |  | | | |__| | | |      | |  | | | |  | | | |____   |"},
@@ -36,8 +38,8 @@ public class Arcade
         Console.WriteLine("2. Create Account");
         Console.WriteLine("3. Login to Account");
         Console.WriteLine("4. Logout from Account");
-        Console.WriteLine("4. View Account");
-        Console.WriteLine("5. View Statistics");
+        Console.WriteLine("5. View Account");
+        Console.WriteLine("6. View Statistics");
         Console.WriteLine();
         Console.WriteLine("Please enter the number of the desired action");
         Console.WriteLine();
@@ -64,10 +66,15 @@ public class Arcade
         }
         else if(choice == 1)
         {
-            foreach (String i in games)
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            foreach (String i in gameList)
             {
                 Console.WriteLine($"{i}");
             }
+            Console.WriteLine();
+            gameChoice();
         }
         else if(choice > 1)
         {
@@ -76,6 +83,39 @@ public class Arcade
             redirection();
         }
 
+    }
+
+    private void gameChoice()
+    {
+        Console.WriteLine("Type in the name or number of the desired game");
+        Console.WriteLine();
+        Console.WriteLine(">>>");
+        String input = Console.ReadLine();
+        Console.WriteLine("<<<");
+
+            if (input.Equals(gameList[0]) || input.Equals("1"))
+            {
+                Console.WriteLine("___///------///___Under Construction___///------///___");
+                Console.WriteLine();
+                gameChoice();
+            }
+            else if (input.Equals(gameList[1]) || input.Equals("2"))
+            {
+                Console.WriteLine("___///------///___Under Construction___///------///___");
+                Console.WriteLine();
+                gameChoice();
+            }
+            else if (input.Equals(gameList[2]) || input.Equals("3"))
+            {
+                Console.WriteLine("___///------///___Under Construction___///------///___");
+                Console.WriteLine();
+                gameChoice();
+            } 
+            else if (input.Equals(gameList[3]) || input.Equals("4"))
+            {
+                Hangman game = new Hangman();
+                game.play();
+            }
     }
 
 
