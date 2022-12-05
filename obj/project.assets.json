@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\mrmax\\.nuget\\packages\\": {}
+    "C:\\Users\\user802\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\Repos\\CSharp\\CSharp.csproj",
+      "projectUniqueName": "C:\\Users\\user802\\Documents\\Cyberspace\\CSharp-Arcade\\CSharp.csproj",
       "projectName": "CSharp",
-      "projectPath": "D:\\GitHub\\Repos\\CSharp\\CSharp.csproj",
-      "packagesPath": "C:\\Users\\mrmax\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\Repos\\CSharp\\obj\\",
+      "projectPath": "C:\\Users\\user802\\Documents\\Cyberspace\\CSharp-Arcade\\CSharp.csproj",
+      "packagesPath": "C:\\Users\\user802\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user802\\Documents\\Cyberspace\\CSharp-Arcade\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mrmax\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\user802\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"

@@ -6,29 +6,45 @@ public class Arcade
 {
     //attributes
     String[] gameList = new String[]{"Rock-Paper-Scisscor", "Tic-Tac-Toe", "Connect 4", "Hangman"};
+    String[,] logo = new String[5,1]
+            {
+                  
+                {"   █████  ██████   ██████  █████  ██████  ███████  "},
+                {"  ██   ██ ██   ██ ██      ██   ██ ██   ██ ██       "},
+                {"  ███████ ██████  ██      ███████ ██   ██ █████    "},
+                {"  ██   ██ ██   ██ ██      ██   ██ ██   ██ ██       "},
+                {"  ██   ██ ██   ██  ██████ ██   ██ ██████  ███████  "}, 
+            };
+    String[,] dExit = new String[5,1]
+            {  
+                {"   ██████   ██████   ██████  ██████  ██████  ██    ██ ███████  "},
+                {"  ██       ██    ██ ██    ██ ██   ██ ██   ██  ██  ██  ██       "},
+                {"  ██   ███ ██    ██ ██    ██ ██   ██ ██████    ████   █████    "},
+                {"  ██    ██ ██    ██ ██    ██ ██   ██ ██   ██    ██    ██       "},
+                {"   ██████   ██████   ██████  ██████  ██████     ██    ███████  "},
+            };
+
+    String[,] gList = new String[5,1]
+            {  
+                {"  ██████   █████  ███    ███ ███████     ██      ██ ███████ ████████ "},
+                {" ██       ██   ██ ████  ████ ██          ██      ██ ██         ██    "},
+                {" ██   ███ ███████ ██ ████ ██ █████       ██      ██ ███████    ██    "},
+                {" ██    ██ ██   ██ ██  ██  ██ ██          ██      ██      ██    ██    "},
+                {"  ██████  ██   ██ ██      ██ ███████     ███████ ██ ███████    ██    "},
+            };
 
     //methods
     public void menu()
     {
-        String[,] logo = new String[8,1]
-        {
-          {" _________________________________________________________ "},  //ARCADE
-          {"|   ______   ______   ______   ______   _____    ______   |"},  
-          {"|  |  __  | |  __  | |  ____| |  __  | |  __ -  |  ____|  |"},
-          {"|  | |  | | | |__| | | |      | |  | | | |  | | | |____   |"},
-          {"|  | |__| | |    __| | |      | |__| | | |  | | |  ____|  |"},
-          {"|  |  __  | | ||_|_  | |____  |  __  | | |__| | | |____   |"},
-          {"|  |_|  |_| |_|  |_| |______| |_|  |_| |_____-  |______|  |"}, 
-          {"|_________________________________________________________|"}
-        };
-
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine();
         for(int i = 0; i < logo.GetLength(0); i++)
         {
             //Console.WriteLine(logo.GetLength(1));
             //Console.WriteLine(logo.GetLength(2));
             Console.WriteLine(logo[i,0]);
         }
-
         Console.WriteLine();
         Console.WriteLine();
         Console.WriteLine();
@@ -40,6 +56,7 @@ public class Arcade
         Console.WriteLine("4. Logout from Account");
         Console.WriteLine("5. View Account");
         Console.WriteLine("6. View Statistics");
+        Console.WriteLine("7. Exit");
         Console.WriteLine();
         Console.WriteLine("Please enter the number of the desired action");
         Console.WriteLine();
@@ -48,17 +65,25 @@ public class Arcade
 
     private void exit()
     {
-        Console.WriteLine("Goodbye");
+        Console.WriteLine();
+        Console.WriteLine("__________________________________________________________________________________________________________");
+        Console.WriteLine();
+        for(int i = 0; i < dExit.GetLength(0); i++)
+        {
+            Console.WriteLine(dExit[i,0]);
+        }
+        Console.WriteLine("__________________________________________________________________________________________________________");
+        Console.WriteLine();
     }
 
-    private void redirection()
+    public void redirection()
     {
         Console.WriteLine(">>>");
-        String input = Console.ReadLine();
+        String input = Console.ReadLine() + "";
         int choice = Int32.Parse(input);
         Console.WriteLine("<<<");
 
-        if(choice > 6) 
+        if(choice > 7) 
         {
             Console.WriteLine("ERROR --- Please try another Number");
             Console.WriteLine();
@@ -69,14 +94,26 @@ public class Arcade
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
+            for(int i = 0; i <  gList.GetLength(0); i++)
+            {
+                Console.WriteLine(gList[i,0]);
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            int j = 1;
             foreach (String i in gameList)
             {
-                Console.WriteLine($"{i}");
+                Console.WriteLine( j + ". "+ $"{i}");
+                j++;
             }
             Console.WriteLine();
             gameChoice();
         }
-        else if(choice > 1)
+        else if(choice == 7)
+        {
+            exit();
+        }
+        else if(choice > 1 && choice != 7)
         {
             Console.WriteLine("___///------///___Under Construction___///------///___");
             Console.WriteLine();
@@ -90,7 +127,7 @@ public class Arcade
         Console.WriteLine("Type in the name or number of the desired game");
         Console.WriteLine();
         Console.WriteLine(">>>");
-        String input = Console.ReadLine();
+        String input = Console.ReadLine() + "";
         Console.WriteLine("<<<");
 
             if (input.Equals(gameList[0]) || input.Equals("1"))
