@@ -22,9 +22,6 @@ public class Hangman
         {"  ██    ██ ██    ██ ██    ██ ██   ██ ██   ██    ██    ██       "},
         {"   ██████   ██████   ██████  ██████  ██████     ██    ███████  "}, 
     };
-    
-    String word = "";
-    
 
 
 
@@ -96,15 +93,38 @@ public class Hangman
 
     private void game()
     {
-        wordChooser();
-        Console.WriteLine(word);
+        int guessedWrong = 0;
+        String wrongLetters = "";
+        String word = wordChooser();
+        String hidden = wordHider(word);
+        //Console.WriteLine(word);
+        //Console.WriteLine(hidden);
+        char[] wordA = word.ToCharArray();          //word as Char-Array 
+        char[] hiddenA = hidden.ToCharArray();     //hidden word as Char-Array 
+
+        String[,] man = new String[,]           //Hangman 
+        { 
+            
+        };
+
+
     }
 
-    private void wordChooser()
+    private String wordChooser()
     {
-        String[] lines = File.ReadAllLines("C:\\Users\\user802\\Documents\\Cyberspace\\CSharp-Arcade\\sub\\gameCollection\\wordList");
+        String[] lines = File.ReadAllLines("C:\\Users\\user802\\Documents\\Cyberspace\\CSharp-Arcade\\sub\\gameCollection\\wordList\\wordList.txt");
         Random rand = new Random();
-        word = lines[rand.Next(0, lines.Length - 1)];
+        return lines[rand.Next(0, lines.Length - 1)];
+    }
+
+    private String wordHider(String word)
+    {
+        String hidden = "";
+        for(int i = 0; i < word.Length; i++)
+        {
+            hidden += "_";
+        }
+        return hidden;
     }
 
 }
