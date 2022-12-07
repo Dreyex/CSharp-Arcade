@@ -23,10 +23,7 @@ public class Hangman
         {"   ██████   ██████   ██████  ██████  ██████     ██    ███████  "}, 
     };
     
-    //foreach (String line in SystemIO)
-    //{
-        
-    //}
+    String word = "";
     
 
 
@@ -55,19 +52,19 @@ public class Hangman
         Console.WriteLine("<<<");
         Console.WriteLine();
 
-        if(input.Equals("1") || input.Equals("Rules"))  
+        if(input.Equals("1") || input.Equals("Rules") || input.Equals("1"))  
         {
             rules();
         }  
-        else if(input.Equals("2") || input.Equals("Start Game"))  
+        else if(input.Equals("2") || input.Equals("Start Game") || input.Equals("2")) 
         {
             game();
         }
-        else if(input.Equals("3") || input.Equals("Exit"))  
+        else if(input.Equals("3") || input.Equals("Exit") || input.Equals("3"))  
         {
             exit();
         }
-        else if(input.Equals("4") || input.Equals("Direct exit"))  
+        else if(input.Equals("4") || input.Equals("Direct exit") || input.Equals("4"))  
         {
             directExit();
         }
@@ -99,7 +96,15 @@ public class Hangman
 
     private void game()
     {
+        wordChooser();
+        Console.WriteLine(word);
+    }
 
+    private void wordChooser()
+    {
+        String[] lines = File.ReadAllLines("C:\\Users\\user802\\Documents\\Cyberspace\\CSharp-Arcade\\sub\\gameCollection\\wordList");
+        Random rand = new Random();
+        word = lines[rand.Next(0, lines.Length - 1)];
     }
 
 }
