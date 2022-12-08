@@ -105,7 +105,7 @@ public class Hangman
         hidden = wordHider(word);           //hide the word from the screen
         wordA = word.ToCharArray();         //convert word to array
         hiddenA = hidden.ToCharArray();     //convert hidden to array
-
+        Console.WriteLine(word);
         while(!wordA.Equals(hiddenA) && guessedWrong != 8)
         {
             Console.WriteLine("----------------------------------------");
@@ -122,25 +122,11 @@ public class Hangman
             ConsoleKeyInfo key = Console.ReadKey(); //gets the pressed key
             char input = key.KeyChar;               //converts it to a char
             input = char.ToUpper(input); //converts it to Uppercase 
-            Console.WriteLine();               
+            Console.WriteLine();   
             for(int i = 0; i < wordA.Length; i++)
             {
-                if(input == wordA[i])
-                {
-                    hiddenA[i] = input; 
-                }
-                else if(wrongLetters.Contains(input))
-                {
-                    break;
-                }
-                else if(i == wordA.Length - 1)
-                {  
-                    guessedWrong++;
-                    wrongLetters += input;
-                }
-            }
-
-
+                compare(input);
+            }       
         }
         if(guessedWrong == 8)
         {
@@ -152,9 +138,12 @@ public class Hangman
             Console.WriteLine("The word was: " + word);      
             Console.WriteLine("Guessed Wrong: " + guessedWrong);
             Console.WriteLine("Wrong guessed Letters: " + wrongLetters);
+            guessedWrong = 0;
+            wrongLetters = "";
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("----------------------------------------");
+            play();
         }
         else if(wordA.Equals(hiddenA))
         {
@@ -165,9 +154,38 @@ public class Hangman
              Console.WriteLine("The word was: " + word);      
              Console.WriteLine("Guessed Wrong: " + guessedWrong);
              Console.WriteLine("Wroong guessed Letters: " + wrongLetters);
+             guessedWrong = 0;
+             wrongLetters = "";
              Console.WriteLine("----------------------------------------");
              Console.WriteLine("----------------------------------------");
              Console.WriteLine("----------------------------------------");
+             play();
+        }
+    }
+
+    private void compare(char inp)
+    {
+        if(wordA.Contains(inp))
+        {
+            for(int i = 0; i < wordA.Length; i++)
+            {
+                if(inp == wordA[i])
+                {
+                    hiddenA[i] = inp;
+                }
+            }
+        }
+        else
+        {
+            if(wrongLetters.Contains(inp))
+            {
+
+            }
+            else
+            {
+                guessedWrong++;
+                wrongLetters += inp;
+            }
         }
     }
 
