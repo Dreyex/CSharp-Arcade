@@ -192,7 +192,7 @@ public class Hangman
     private String wordChooser()    //chooeses a random word rom a very big list of words
     {
         String[] lines = File.ReadAllLines("sub\\gameCollection\\wordlist\\wordList.txt");    //reads every line of a file and for each line it saves the value in an array
-        Random rand = new Random();                         //get a random number
+        Random rand = new Random();                         //get a random number             //^relative path to the txt file
         return lines[rand.Next(0, lines.Length - 1)];       //from in the given dimensions
     }
 
