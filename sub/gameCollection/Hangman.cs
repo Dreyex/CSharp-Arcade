@@ -98,10 +98,12 @@ public class Hangman
 
     }
 
-    private void game()
+    private void game()     //Fehler beim Vergleich der Arrays hiddenA und wordA
+                            //Idee: Zähler für richtige Buchstaben und dann Vergleich mit Länge des Wortes (wordA)
+                            //      da der Vergleich der Arrays nicht funktioniert aber der Zahlenvergleich für falsche Buchstaben
     {   
         //get a value for the attributes
-        word = wordChooser().ToUpper();               //get a word to guess
+        word = wordChooser().ToUpper();     //get a word to guess
         hidden = wordHider(word);           //hide the word from the screen
         wordA = word.ToCharArray();         //convert word to array
         hiddenA = hidden.ToCharArray();     //convert hidden to array
@@ -123,10 +125,16 @@ public class Hangman
             char input = key.KeyChar;               //converts it to a char
             input = char.ToUpper(input); //converts it to Uppercase 
             Console.WriteLine();   
-            for(int i = 0; i < wordA.Length; i++)
-            {
+            //for(int i = 0; i < wordA.Length; i++)
+            //{
                 compare(input);
-            }       
+            //} 
+            for(int i = 0; i < hiddenA.Length; i++)
+            {
+                Console.WriteLine("wordA: " + wordA[i]);    
+                Console.WriteLine("HiddenA: " + hiddenA[i]);  
+            } 
+            
         }
         if(guessedWrong == 8)
         {
@@ -145,7 +153,7 @@ public class Hangman
             Console.WriteLine("----------------------------------------");
             play();
         }
-        else if(wordA.Equals(hiddenA))
+        else if(checkWin(wordA, hiddenA))
         {
              Console.WriteLine("----------------------------------------");
              Console.WriteLine("----------------------------------------");
@@ -189,11 +197,11 @@ public class Hangman
         }
     }
 
-    private String wordChooser()    //chooeses a random word rom a very big list of words
+    private String wordChooser()    //chooses a random word rom a very big list of words
     {
         String[] lines = File.ReadAllLines("sub\\gameCollection\\wordlist\\wordList.txt");    //reads every line of a file and for each line it saves the value in an array
         Random rand = new Random();                         //get a random number             //^relative path to the txt file
-        return lines[rand.Next(0, lines.Length - 1)];       //from in the given dimensions
+        return lines[rand.Next(0, lines.Length - 1)];       //from the given dimensions
     }
 
     private String wordHider(String word)       //hides word with "_" to display the word 
@@ -204,6 +212,22 @@ public class Hangman
             hidden += "_";
         }
         return hidden;
+    }
+
+    private bool checkWin(char[] x, char[] y)
+    {
+        if(x.Length != y.Length)
+        {
+            return false;
+        }
+        for(int i = 0; i < x.Length; i++)
+        {
+            if(x[i] != y[i])
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void hangman(int guessesWrong)      //displays the hangman based on the wrong guessed letters
