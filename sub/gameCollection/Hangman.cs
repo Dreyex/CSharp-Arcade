@@ -23,11 +23,12 @@ public class Hangman
         {"   ██████   ██████   ██████  ██████  ██████     ██    ███████  "}, 
     };
 
-    int guessedWrong = 0; //maximum 6
+    int guessedWrong = 0; //maximum 8 wrong guesses
+    int guessedRight = 0; //maximum  length of the word
     String wrongLetters = "";
     String word;
     String hidden;
-    char[] wordA;          //word as Char-Array 
+    char[] wordA;       //word as Char-Array 
     char[] hiddenA;     //hidden word as Char-Array 
     String guess;
 
@@ -56,21 +57,26 @@ public class Hangman
         Console.WriteLine("<<<");
         Console.WriteLine();
 
-        if(input.Equals("1") || input.Equals("Rules") || input.Equals("1"))  
+        if(input.Equals("1") || input.Equals("Rules"))  
         {
             rules();
         }  
-        else if(input.Equals("2") || input.Equals("Start Game") || input.Equals("2")) 
+        else if(input.Equals("2") || input.Equals("Start Game")) 
         {
             game();
         }
-        else if(input.Equals("3") || input.Equals("Exit") || input.Equals("3"))  
+        else if(input.Equals("3") || input.Equals("Exit"))  
         {
             exit();
         }
-        else if(input.Equals("4") || input.Equals("Direct exit") || input.Equals("4"))  
+        else if(input.Equals("4") || input.Equals("Direct exit"))  
         {
             directExit();
+        }
+        else
+        {
+            Console.WriteLine("Invalid input - Please try again");
+            play();
         }
     }
 
@@ -108,7 +114,7 @@ public class Hangman
         wordA = word.ToCharArray();         //convert word to array
         hiddenA = hidden.ToCharArray();     //convert hidden to array
         Console.WriteLine(word);
-        while(!wordA.Equals(hiddenA) && guessedWrong != 8)
+        while(guessedRight != wordA.Length && guessedWrong != 8)
         {
             Console.WriteLine("----------------------------------------");
             hangman(guessedWrong);  //displays the current state of the Hangman
@@ -127,13 +133,13 @@ public class Hangman
             Console.WriteLine();   
             //for(int i = 0; i < wordA.Length; i++)
             //{
-                compare(input);
+            compare(input);
             //} 
-            for(int i = 0; i < hiddenA.Length; i++)
-            {
-                Console.WriteLine("wordA: " + wordA[i]);    
-                Console.WriteLine("HiddenA: " + hiddenA[i]);  
-            } 
+            // for(int i = 0; i < hiddenA.Length; i++)
+            // {
+            //     Console.WriteLine("wordA: " + wordA[i]);    
+            //     Console.WriteLine("HiddenA: " + hiddenA[i]);  
+            // } 
             
         }
         if(guessedWrong == 8)
@@ -147,27 +153,29 @@ public class Hangman
             Console.WriteLine("Guessed Wrong: " + guessedWrong);
             Console.WriteLine("Wrong guessed Letters: " + wrongLetters);
             guessedWrong = 0;
+            guessedRight = 0;
             wrongLetters = "";
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("----------------------------------------");
             play();
         }
-        else if(checkWin(wordA, hiddenA))
+        else if(guessedRight == wordA.Length)
         {
-             Console.WriteLine("----------------------------------------");
-             Console.WriteLine("----------------------------------------");
-             Console.WriteLine("----------------------------------------");
-             Console.WriteLine("You Won!"); 
-             Console.WriteLine("The word was: " + word);      
-             Console.WriteLine("Guessed Wrong: " + guessedWrong);
-             Console.WriteLine("Wroong guessed Letters: " + wrongLetters);
-             guessedWrong = 0;
-             wrongLetters = "";
-             Console.WriteLine("----------------------------------------");
-             Console.WriteLine("----------------------------------------");
-             Console.WriteLine("----------------------------------------");
-             play();
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("You Won!"); 
+            Console.WriteLine("The word was: " + word);      
+            Console.WriteLine("Guessed Wrong: " + guessedWrong);
+            Console.WriteLine("Wroong guessed Letters: " + wrongLetters);
+            guessedWrong = 0;
+            guessedRight = 0;
+            wrongLetters = "";
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("----------------------------------------");
+            play();
         }
     }
 
@@ -180,6 +188,7 @@ public class Hangman
                 if(inp == wordA[i])
                 {
                     hiddenA[i] = inp;
+                    guessedRight++;
                 }
             }
         }
@@ -212,22 +221,6 @@ public class Hangman
             hidden += "_";
         }
         return hidden;
-    }
-
-    private bool checkWin(char[] x, char[] y)
-    {
-        if(x.Length != y.Length)
-        {
-            return false;
-        }
-        for(int i = 0; i < x.Length; i++)
-        {
-            if(x[i] != y[i])
-            {
-                return false;
-            }
-        }
-        return true;
     }
 
     private void hangman(int guessesWrong)      //displays the hangman based on the wrong guessed letters
