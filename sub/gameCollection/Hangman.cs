@@ -113,7 +113,7 @@ public class Hangman
         hidden = wordHider(word);           //hide the word from the screen
         wordA = word.ToCharArray();         //convert word to array
         hiddenA = hidden.ToCharArray();     //convert hidden to array
-        Console.WriteLine(word);
+        //Console.WriteLine(word);
         while(guessedRight != wordA.Length && guessedWrong != 8)
         {
             Console.WriteLine("----------------------------------------");
