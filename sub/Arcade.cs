@@ -7,8 +7,7 @@ public class Arcade
     //attributes
     String[] gameList = new String[]{"Rock-Paper-Scisscor", "Tic-Tac-Toe", "Connect 4", "Hangman"};
     String[,] logo = new String[5,1]
-            {
-                  
+            {    
                 {"   █████  ██████   ██████  █████  ██████  ███████  "},
                 {"  ██   ██ ██   ██ ██      ██   ██ ██   ██ ██       "},
                 {"  ███████ ██████  ██      ███████ ██   ██ █████    "},
@@ -144,9 +143,8 @@ public class Arcade
             }
             else if (input.Equals(gameList[2]) || input.Equals("3"))
             {
-                Console.WriteLine("___///------///___Under Construction___///------///___");
-                Console.WriteLine();
-                gameChoice();
+                Connect4 game = new Connect4();
+                game.play();
             } 
             else if (input.Equals(gameList[3]) || input.Equals("4"))
             {
